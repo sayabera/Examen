@@ -49,47 +49,9 @@ public class TrabajoFinal extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+
         btnAcceder = new Button();
         btnAcceder.setText("ACCEDER");
-        if (tfUsuario.getText().isEmpty()) {
-            if (tfPsw != null) {
-                btnAcceder.setOnAction(new EventHandler<ActionEvent>() {
-
-                    @Override
-                    public void handle(ActionEvent event) {
-                        StackPane root1 = new StackPane();
-                        Scene scene = new Scene(root1, 600, 400);
-                        primaryStage.setTitle("MI CUENTA");
-                        primaryStage.setScene(scene);
-                        primaryStage.show();
-                        
-                    }
-                });
-
-            } else {
-                StackPane root2 = new StackPane();
-                root2.getChildren().addAll(errorPsw);
-                Scene scene = new Scene(root2, 300, 300);
-                primaryStage.setTitle("FALLO");
-                primaryStage.setScene(scene);
-                primaryStage.show();
-            }
-        } else {
-            StackPane root3 = new StackPane();
-            root3.getChildren().addAll(errorUsuario);
-            Scene scene = new Scene(root3, 300, 300);
-            primaryStage.setTitle("FALLO");
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }
-
-        logo = new Image(getClass().getResourceAsStream("/resources/logo.jpg"));
-        vistaLogo = new ImageView(logo);
-        bPane.setTop(vistaLogo);
-
-        relleno = new Image(getClass().getResourceAsStream("/resources/relleno.png"));
-        vistaRelleno = new ImageView(relleno);
-        bPane.setLeft(vistaRelleno);
 
         btnAcceder.setLayoutX(90);
         btnAcceder.setLayoutY(230);
@@ -112,6 +74,48 @@ public class TrabajoFinal extends Application {
 
         panelLogin.getChildren().addAll(lbUsuario, lbPsw, tfUsuario, tfPsw, btnAcceder);
         bPane.setCenter(panelLogin);
+
+        btnAcceder.setOnAction(new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent event) {
+
+                if (tfUsuario.getText().equals("Patata")) {
+
+                    if (tfPsw.getText().equals( "Tomate")) {
+
+                        StackPane root1 = new StackPane();
+                        Scene scene = new Scene(root1, 600, 400);
+                        primaryStage.setTitle("MI CUENTA");
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                    } else {
+                        StackPane root2 = new StackPane();
+                        root2.getChildren().addAll(errorPsw);
+                        Scene scene = new Scene(root2, 300, 300);
+                        primaryStage.setTitle("FALLO");
+                        primaryStage.setScene(scene);
+                        primaryStage.show();
+                    }
+                } else {
+                    StackPane root3 = new StackPane();
+                    root3.getChildren().addAll(errorUsuario);
+                    Scene scene = new Scene(root3, 300, 300);
+                    primaryStage.setTitle("FALLO");
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
+                }
+
+            }
+        });
+
+        logo = new Image(getClass().getResourceAsStream("/resources/logo.jpg"));
+        vistaLogo = new ImageView(logo);
+        bPane.setTop(vistaLogo);
+
+        relleno = new Image(getClass().getResourceAsStream("/resources/relleno.png"));
+        vistaRelleno = new ImageView(relleno);
+        bPane.setLeft(vistaRelleno);
 
         Scene scene = new Scene(bPane, 600, 400);
 
